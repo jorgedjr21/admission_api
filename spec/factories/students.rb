@@ -1,6 +1,8 @@
+# frozen_string_literal: true
+
 FactoryBot.define do
   factory :student do
-    name { "MyString" }
-    cpf { "MyString" }
+    name { Faker::Name.name }
+    cpf  { CPF.generate(true) }
   end
 end

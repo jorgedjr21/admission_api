@@ -1,0 +1,167 @@
+Started GET "/" for 172.26.0.1 at 2018-11-21 21:45:12 +0000
+Cannot render console from 172.26.0.1! Allowed networks: 127.0.0.1, ::1, 127.0.0.0/127.255.255.255
+  
+ActiveRecord::PendingMigrationError (
+
+Migrations are pending. To resolve this issue, run:
+
+        bin/rails db:migrate RAILS_ENV=development
+
+):
+  
+activerecord (5.2.1) lib/active_record/migration.rb:579:in `check_pending!'
+activerecord (5.2.1) lib/active_record/migration.rb:556:in `call'
+actionpack (5.2.1) lib/action_dispatch/middleware/callbacks.rb:28:in `block in call'
+activesupport (5.2.1) lib/active_support/callbacks.rb:98:in `run_callbacks'
+actionpack (5.2.1) lib/action_dispatch/middleware/callbacks.rb:26:in `call'
+actionpack (5.2.1) lib/action_dispatch/middleware/executor.rb:14:in `call'
+actionpack (5.2.1) lib/action_dispatch/middleware/debug_exceptions.rb:61:in `call'
+web-console (3.7.0) lib/web_console/middleware.rb:135:in `call_app'
+web-console (3.7.0) lib/web_console/middleware.rb:22:in `block in call'
+web-console (3.7.0) lib/web_console/middleware.rb:20:in `catch'
+web-console (3.7.0) lib/web_console/middleware.rb:20:in `call'
+actionpack (5.2.1) lib/action_dispatch/middleware/show_exceptions.rb:33:in `call'
+railties (5.2.1) lib/rails/rack/logger.rb:38:in `call_app'
+railties (5.2.1) lib/rails/rack/logger.rb:26:in `block in call'
+activesupport (5.2.1) lib/active_support/tagged_logging.rb:71:in `block in tagged'
+activesupport (5.2.1) lib/active_support/tagged_logging.rb:28:in `tagged'
+activesupport (5.2.1) lib/active_support/tagged_logging.rb:71:in `tagged'
+railties (5.2.1) lib/rails/rack/logger.rb:26:in `call'
+actionpack (5.2.1) lib/action_dispatch/middleware/remote_ip.rb:81:in `call'
+actionpack (5.2.1) lib/action_dispatch/middleware/request_id.rb:27:in `call'
+rack (2.0.6) lib/rack/method_override.rb:22:in `call'
+rack (2.0.6) lib/rack/runtime.rb:22:in `call'
+activesupport (5.2.1) lib/active_support/cache/strategy/local_cache_middleware.rb:29:in `call'
+actionpack (5.2.1) lib/action_dispatch/middleware/executor.rb:14:in `call'
+actionpack (5.2.1) lib/action_dispatch/middleware/static.rb:127:in `call'
+rack (2.0.6) lib/rack/sendfile.rb:111:in `call'
+webpacker (3.5.5) lib/webpacker/dev_server_proxy.rb:22:in `perform_request'
+rack-proxy (0.6.5) lib/rack/proxy.rb:57:in `call'
+railties (5.2.1) lib/rails/engine.rb:524:in `call'
+puma (3.12.0) lib/puma/configuration.rb:225:in `call'
+puma (3.12.0) lib/puma/server.rb:658:in `handle_request'
+puma (3.12.0) lib/puma/server.rb:472:in `process_client'
+puma (3.12.0) lib/puma/server.rb:332:in `block in run'
+puma (3.12.0) lib/puma/thread_pool.rb:133:in `block in spawn_thread'
+  [1m[35m (0.1ms)[0m  [1m[34mSELECT sqlite_version(*)[0m
+  ↳ bin/rails:4
+  [1m[35m (128.9ms)[0m  [1m[35mCREATE TABLE "schema_migrations" ("version" varchar NOT NULL PRIMARY KEY)[0m
+  ↳ bin/rails:4
+  [1m[35m (121.9ms)[0m  [1m[35mCREATE TABLE "ar_internal_metadata" ("key" varchar NOT NULL PRIMARY KEY, "value" varchar, "created_at" datetime NOT NULL, "updated_at" datetime NOT NULL)[0m
+  ↳ bin/rails:4
+  [1m[35m (0.2ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+  ↳ bin/rails:4
+Migrating to CreateStudents (20181121011315)
+  [1m[35m (0.1ms)[0m  [1m[36mbegin transaction[0m
+  ↳ bin/rails:4
+  [1m[35m (0.5ms)[0m  [1m[35mCREATE TABLE "students" ("id" integer PRIMARY KEY AUTOINCREMENT NOT NULL, "name" varchar, "cpf" varchar, "created_at" datetime NOT NULL, "updated_at" datetime NOT NULL)[0m
+  ↳ db/migrate/20181121011315_create_students.rb:3
+  [1m[36mActiveRecord::SchemaMigration Create (0.2ms)[0m  [1m[32mINSERT INTO "schema_migrations" ("version") VALUES (?)[0m  [["version", "20181121011315"]]
+  ↳ bin/rails:4
+  [1m[35m (146.9ms)[0m  [1m[36mcommit transaction[0m
+  ↳ bin/rails:4
+Migrating to CreateBillings (20181121013201)
+  [1m[35m (0.1ms)[0m  [1m[36mbegin transaction[0m
+  ↳ bin/rails:4
+  [1m[35m (1.2ms)[0m  [1m[35mCREATE TABLE "billings" ("id" integer PRIMARY KEY AUTOINCREMENT NOT NULL, "student_id" integer, "desired_due_day" integer, "status" varchar, "created_at" datetime NOT NULL, "updated_at" datetime NOT NULL)[0m
+  ↳ db/migrate/20181121013201_create_billings.rb:3
+  [1m[36mActiveRecord::SchemaMigration Create (0.2ms)[0m  [1m[32mINSERT INTO "schema_migrations" ("version") VALUES (?)[0m  [["version", "20181121013201"]]
+  ↳ bin/rails:4
+  [1m[35m (104.8ms)[0m  [1m[36mcommit transaction[0m
+  ↳ bin/rails:4
+Migrating to CreateBills (20181121013209)
+  [1m[35m (0.1ms)[0m  [1m[36mbegin transaction[0m
+  ↳ bin/rails:4
+  [1m[35m (1.5ms)[0m  [1m[35mCREATE TABLE "bills" ("id" integer PRIMARY KEY AUTOINCREMENT NOT NULL, "value" decimal, "due_date" datetime, "paid_date" datetime, "status" varchar, "month" integer, "year" integer, "created_at" datetime NOT NULL, "updated_at" datetime NOT NULL)[0m
+  ↳ db/migrate/20181121013209_create_bills.rb:3
+  [1m[36mActiveRecord::SchemaMigration Create (0.3ms)[0m  [1m[32mINSERT INTO "schema_migrations" ("version") VALUES (?)[0m  [["version", "20181121013209"]]
+  ↳ bin/rails:4
+  [1m[35m (149.2ms)[0m  [1m[36mcommit transaction[0m
+  ↳ bin/rails:4
+Migrating to CreateAdmissions (20181121013309)
+  [1m[35m (0.1ms)[0m  [1m[36mbegin transaction[0m
+  ↳ bin/rails:4
+  [1m[35m (1.3ms)[0m  [1m[35mCREATE TABLE "admissions" ("id" integer PRIMARY KEY AUTOINCREMENT NOT NULL, "student_id" integer, "step" varchar, "enem_grade" integer, "created_at" datetime NOT NULL, "updated_at" datetime NOT NULL)[0m
+  ↳ db/migrate/20181121013309_create_admissions.rb:3
+  [1m[36mActiveRecord::SchemaMigration Create (0.2ms)[0m  [1m[32mINSERT INTO "schema_migrations" ("version") VALUES (?)[0m  [["version", "20181121013309"]]
+  ↳ bin/rails:4
+  [1m[35m (97.7ms)[0m  [1m[36mcommit transaction[0m
+  ↳ bin/rails:4
+Migrating to CreatePayments (20181121014226)
+  [1m[35m (0.1ms)[0m  [1m[36mbegin transaction[0m
+  ↳ bin/rails:4
+  [1m[35m (0.5ms)[0m  [1m[35mCREATE TABLE "payments" ("id" integer PRIMARY KEY AUTOINCREMENT NOT NULL, "value" decimal, "status" varchar, "method" varchar, "expiry_date" datetime, "created_at" datetime NOT NULL, "updated_at" datetime NOT NULL)[0m
+  ↳ db/migrate/20181121014226_create_payments.rb:3
+  [1m[36mActiveRecord::SchemaMigration Create (0.2ms)[0m  [1m[32mINSERT INTO "schema_migrations" ("version") VALUES (?)[0m  [["version", "20181121014226"]]
+  ↳ bin/rails:4
+  [1m[35m (108.6ms)[0m  [1m[36mcommit transaction[0m
+  ↳ bin/rails:4
+Migrating to CreateActiveStorageTables (20181121020428)
+  [1m[35m (0.1ms)[0m  [1m[36mbegin transaction[0m
+  ↳ bin/rails:4
+  [1m[35m (0.5ms)[0m  [1m[35mCREATE TABLE "active_storage_blobs" ("id" integer PRIMARY KEY AUTOINCREMENT NOT NULL, "key" varchar NOT NULL, "filename" varchar NOT NULL, "content_type" varchar, "metadata" text, "byte_size" bigint NOT NULL, "checksum" varchar NOT NULL, "created_at" datetime NOT NULL)[0m
+  ↳ db/migrate/20181121020428_create_active_storage_tables.active_storage.rb:4
+  [1m[35m (0.2ms)[0m  [1m[35mCREATE UNIQUE INDEX "index_active_storage_blobs_on_key" ON "active_storage_blobs" ("key")[0m
+  ↳ db/migrate/20181121020428_create_active_storage_tables.active_storage.rb:4
+  [1m[35m (0.2ms)[0m  [1m[35mCREATE TABLE "active_storage_attachments" ("id" integer PRIMARY KEY AUTOINCREMENT NOT NULL, "name" varchar NOT NULL, "record_type" varchar NOT NULL, "record_id" integer NOT NULL, "blob_id" integer NOT NULL, "created_at" datetime NOT NULL)[0m
+  ↳ db/migrate/20181121020428_create_active_storage_tables.active_storage.rb:16
+  [1m[35m (0.3ms)[0m  [1m[35mCREATE  INDEX "index_active_storage_attachments_on_blob_id" ON "active_storage_attachments" ("blob_id")[0m
+  ↳ db/migrate/20181121020428_create_active_storage_tables.active_storage.rb:16
+  [1m[35m (0.2ms)[0m  [1m[35mCREATE UNIQUE INDEX "index_active_storage_attachments_uniqueness" ON "active_storage_attachments" ("record_type", "record_id", "name", "blob_id")[0m
+  ↳ db/migrate/20181121020428_create_active_storage_tables.active_storage.rb:16
+  [1m[36mActiveRecord::SchemaMigration Create (0.2ms)[0m  [1m[32mINSERT INTO "schema_migrations" ("version") VALUES (?)[0m  [["version", "20181121020428"]]
+  ↳ bin/rails:4
+  [1m[35m (90.7ms)[0m  [1m[36mcommit transaction[0m
+  ↳ bin/rails:4
+Migrating to RemoveStudentIdFromBillings (20181121214916)
+  [1m[35m (0.1ms)[0m  [1m[36mbegin transaction[0m
+  ↳ bin/rails:4
+  [1m[35m (0.2ms)[0m  [1m[35mCREATE TEMPORARY TABLE "abillings" ("id" integer NOT NULL PRIMARY KEY, "student_id" integer DEFAULT NULL, "desired_due_day" integer DEFAULT NULL, "status" varchar DEFAULT NULL, "created_at" datetime NOT NULL, "updated_at" datetime NOT NULL)[0m
+  ↳ db/migrate/20181121214916_remove_student_id_from_billings.rb:3
+  [1m[35m (0.1ms)[0m  [1m[32mINSERT INTO "abillings" ("id","student_id","desired_due_day","status","created_at","updated_at")
+                     SELECT "id","student_id","desired_due_day","status","created_at","updated_at" FROM "billings"[0m
+  ↳ db/migrate/20181121214916_remove_student_id_from_billings.rb:3
+  [1m[35m (0.3ms)[0m  [1m[35mDROP TABLE "billings"[0m
+  ↳ db/migrate/20181121214916_remove_student_id_from_billings.rb:3
+  [1m[35m (0.2ms)[0m  [1m[35mCREATE TABLE "billings" ("id" integer NOT NULL PRIMARY KEY, "desired_due_day" integer DEFAULT NULL, "status" varchar DEFAULT NULL, "created_at" datetime NOT NULL, "updated_at" datetime NOT NULL)[0m
+  ↳ db/migrate/20181121214916_remove_student_id_from_billings.rb:3
+  [1m[35m (0.1ms)[0m  [1m[32mINSERT INTO "billings" ("id","desired_due_day","status","created_at","updated_at")
+                     SELECT "id","desired_due_day","status","created_at","updated_at" FROM "abillings"[0m
+  ↳ db/migrate/20181121214916_remove_student_id_from_billings.rb:3
+  [1m[35m (0.1ms)[0m  [1m[35mDROP TABLE "abillings"[0m
+  ↳ db/migrate/20181121214916_remove_student_id_from_billings.rb:3
+  [1m[36mActiveRecord::SchemaMigration Create (0.2ms)[0m  [1m[32mINSERT INTO "schema_migrations" ("version") VALUES (?)[0m  [["version", "20181121214916"]]
+  ↳ bin/rails:4
+  [1m[35m (63.3ms)[0m  [1m[36mcommit transaction[0m
+  ↳ bin/rails:4
+Migrating to RemoveStudentIdFromAdmissions (20181121215007)
+  [1m[35m (0.1ms)[0m  [1m[36mbegin transaction[0m
+  ↳ bin/rails:4
+  [1m[35m (0.2ms)[0m  [1m[35mCREATE TEMPORARY TABLE "aadmissions" ("id" integer NOT NULL PRIMARY KEY, "student_id" integer DEFAULT NULL, "step" varchar DEFAULT NULL, "enem_grade" integer DEFAULT NULL, "created_at" datetime NOT NULL, "updated_at" datetime NOT NULL)[0m
+  ↳ db/migrate/20181121215007_remove_student_id_from_admissions.rb:3
+  [1m[35m (0.1ms)[0m  [1m[32mINSERT INTO "aadmissions" ("id","student_id","step","enem_grade","created_at","updated_at")
+                     SELECT "id","student_id","step","enem_grade","created_at","updated_at" FROM "admissions"[0m
+  ↳ db/migrate/20181121215007_remove_student_id_from_admissions.rb:3
+  [1m[35m (0.3ms)[0m  [1m[35mDROP TABLE "admissions"[0m
+  ↳ db/migrate/20181121215007_remove_student_id_from_admissions.rb:3
+  [1m[35m (0.2ms)[0m  [1m[35mCREATE TABLE "admissions" ("id" integer NOT NULL PRIMARY KEY, "step" varchar DEFAULT NULL, "enem_grade" integer DEFAULT NULL, "created_at" datetime NOT NULL, "updated_at" datetime NOT NULL)[0m
+  ↳ db/migrate/20181121215007_remove_student_id_from_admissions.rb:3
+  [1m[35m (0.1ms)[0m  [1m[32mINSERT INTO "admissions" ("id","step","enem_grade","created_at","updated_at")
+                     SELECT "id","step","enem_grade","created_at","updated_at" FROM "aadmissions"[0m
+  ↳ db/migrate/20181121215007_remove_student_id_from_admissions.rb:3
+  [1m[35m (0.1ms)[0m  [1m[35mDROP TABLE "aadmissions"[0m
+  ↳ db/migrate/20181121215007_remove_student_id_from_admissions.rb:3
+  [1m[36mActiveRecord::SchemaMigration Create (0.2ms)[0m  [1m[32mINSERT INTO "schema_migrations" ("version") VALUES (?)[0m  [["version", "20181121215007"]]
+  ↳ bin/rails:4
+  [1m[35m (69.1ms)[0m  [1m[36mcommit transaction[0m
+  ↳ bin/rails:4
+  [1m[36mActiveRecord::InternalMetadata Load (0.2ms)[0m  [1m[34mSELECT  "ar_internal_metadata".* FROM "ar_internal_metadata" WHERE "ar_internal_metadata"."key" = ? LIMIT ?[0m  [["key", "environment"], ["LIMIT", 1]]
+  ↳ bin/rails:4
+  [1m[35m (0.1ms)[0m  [1m[36mbegin transaction[0m
+  ↳ bin/rails:4
+  [1m[36mActiveRecord::InternalMetadata Create (3.1ms)[0m  [1m[32mINSERT INTO "ar_internal_metadata" ("key", "value", "created_at", "updated_at") VALUES (?, ?, ?, ?)[0m  [["key", "environment"], ["value", "development"], ["created_at", "2018-11-21 21:50:49.991316"], ["updated_at", "2018-11-21 21:50:49.991316"]]
+  ↳ bin/rails:4
+  [1m[35m (62.0ms)[0m  [1m[36mcommit transaction[0m
+  ↳ bin/rails:4
+  [1m[35m (0.1ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+  ↳ bin/rails:4

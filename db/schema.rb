@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2018_11_21_215913) do
+ActiveRecord::Schema.define(version: 2018_11_22_205131) do
 
   create_table "active_storage_attachments", force: :cascade do |t|
     t.string "name", null: false
@@ -34,11 +34,11 @@ ActiveRecord::Schema.define(version: 2018_11_21_215913) do
   end
 
   create_table "admissions", force: :cascade do |t|
-    t.string "step"
     t.integer "enem_grade"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
     t.integer "student_id"
+    t.integer "status"
     t.index ["student_id"], name: "index_admissions_on_student_id"
   end
 

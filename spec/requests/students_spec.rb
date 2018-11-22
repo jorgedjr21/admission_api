@@ -12,6 +12,18 @@ RSpec.describe 'Students', type: :request do
     end
   end
 
+  describe 'GET /students/:id' do
+    before { get api_v1_student_path(id: students.first.id) }
+
+    it 'must show a student information' do
+      expect(response.body).to eq(students.first.to_json)
+    end
+
+    it 'must have http status 200' do
+      expect(response).to have_http_status(:ok)
+    end
+  end
+
   describe 'POST /create' do
     context 'when the request is valid' do
       before { post api_v1_students_path, params: { name: Faker::Name.name, cpf: CPF.generate(true) } }
@@ -20,7 +32,7 @@ RSpec.describe 'Students', type: :request do
         expect(response.body).to eq(Student.last.to_json)
       end
 
-      it 'must have http status 200' do
+      it 'must have http status 201' do
         expect(response).to have_http_status(:created)
       end
     end

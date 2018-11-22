@@ -11,8 +11,10 @@ module Api
         json_response(@students)
       end
 
-      # GET /students/1
-      def show; end
+      # GET /students/:id
+      def show
+        json_response(@student)
+      end
 
       # POST /students
       def create
@@ -21,13 +23,13 @@ module Api
         json_response(@student, :created)
       end
 
-      # PATCH/PUT /students/1
+      # PATCH/PUT /students/:id
       def update
         @student.update(student_params)
         head :no_content
       end
 
-      # DELETE /students/1
+      # DELETE /students/:id
       def destroy
         @student.destroy
         head :no_content

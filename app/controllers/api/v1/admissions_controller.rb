@@ -5,30 +5,30 @@ module Api
     class AdmissionsController < ApplicationController
       before_action :set_admission, only: %i[show edit update destroy]
 
-      # GET /admissions
+      # GET students/:student_id/admissions
       def index
-        json_response(Admission.all)
+        json_response(Admission.where(student_id: admission_params[:student_id]))
       end
 
-      # GET /admission/:id
+      # GET students/:student_id/admission/:id
       def show
         json_response(@admission)
       end
 
-      # POST /admissions
+      # POST students/:student_id/admissions
       def create
         @admission = Admission.new(admission_params)
         @admission.save!
         json_response(@admission, :created)
       end
 
-      # PATCH/PUT /admission/1
+      # PATCH/PUT students/:student_id/admissions/:id
       def update
         @admission.update(admission_params)
         head :no_content
       end
 
-      # DELETE /admission/:id
+      # DELETE students/:student_id/admissions/:id
       def destroy
         @admission.destroy
         head :no_content
@@ -37,11 +37,11 @@ module Api
       private
 
       def admission_params
-        params.permit(:student_id, :enem_grade)
+        params.permit(:id, :student_id, :enem_grade)
       end
 
       def set_admission
-        @admission = Admission.find_by(id: params[:id], student_id: params[:student_id])
+        @admission = Admission.find_by(id: admission_params[:id], student_id: admission_params[:student_id])
       end
     end
   end

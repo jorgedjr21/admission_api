@@ -3,10 +3,11 @@
 require 'rails_helper'
 
 RSpec.describe 'Students', type: :request do
-  let!(:student) { create(:student, :with_admissions) }
+  let!(:student)   { create(:student, :with_admissions) }
+  let!(:student_2) { create(:student, :with_admissions) }
 
   describe 'GET students/:student_id/admissions' do
-    it 'must return all admissions' do
+    it 'must return all admissions from student' do
       get api_v1_student_admissions_path(student_id: student.id)
       expect(response.body).to eq(student.admissions.to_json)
     end

@@ -39,12 +39,12 @@ module Api
 
       # Use callbacks to share common setup or constraints between actions.
       def set_student
-        @student = Student.find(params[:id])
+        @student = Student.find(student_params[:id])
       end
 
       # Only allow a trusted parameter "white list" through.
       def student_params
-        params.permit(:name, :cpf)
+        params.permit(:id, :name, :cpf)
       end
     end
   end

@@ -40,6 +40,10 @@ module Api
         params.permit(:id, :student_id, :desired_due_day, :parcels_number)
       end
 
+      def bill_params
+        params.permit(:value)
+      end
+
       def set_billing
         @billing = Billing.find_by(id: billing_params[:id], student_id: billing_params[:student_id])
       end

@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2018_11_22_232545) do
+ActiveRecord::Schema.define(version: 2018_11_23_005704) do
 
   create_table "active_storage_attachments", force: :cascade do |t|
     t.string "name", null: false
@@ -56,11 +56,13 @@ ActiveRecord::Schema.define(version: 2018_11_22_232545) do
     t.decimal "value"
     t.datetime "due_date"
     t.datetime "paid_date"
-    t.string "status"
+    t.integer "status"
     t.integer "month"
     t.integer "year"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+    t.integer "billing_id"
+    t.index ["billing_id"], name: "index_bills_on_billing_id"
   end
 
   create_table "payments", force: :cascade do |t|

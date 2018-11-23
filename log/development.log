@@ -484,3 +484,190 @@ Processing by Rails::InfoController#routes as HTML
 Completed 200 OK in 11ms (Views: 10.1ms | ActiveRecord: 0.0ms)
 
 
+Started GET "/rails/info/routes" for 172.26.0.1 at 2018-11-23 00:14:24 +0000
+Cannot render console from 172.26.0.1! Allowed networks: 127.0.0.1, ::1, 127.0.0.0/127.255.255.255
+  [1m[35m (0.2ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+  ↳ /usr/local/bundle/gems/activerecord-5.2.1/lib/active_record/log_subscriber.rb:98
+  
+ActiveRecord::PendingMigrationError (
+
+Migrations are pending. To resolve this issue, run:
+
+        bin/rails db:migrate RAILS_ENV=development
+
+):
+  
+activerecord (5.2.1) lib/active_record/migration.rb:579:in `check_pending!'
+activerecord (5.2.1) lib/active_record/migration.rb:556:in `call'
+actionpack (5.2.1) lib/action_dispatch/middleware/callbacks.rb:28:in `block in call'
+activesupport (5.2.1) lib/active_support/callbacks.rb:98:in `run_callbacks'
+actionpack (5.2.1) lib/action_dispatch/middleware/callbacks.rb:26:in `call'
+actionpack (5.2.1) lib/action_dispatch/middleware/executor.rb:14:in `call'
+actionpack (5.2.1) lib/action_dispatch/middleware/debug_exceptions.rb:61:in `call'
+web-console (3.7.0) lib/web_console/middleware.rb:135:in `call_app'
+web-console (3.7.0) lib/web_console/middleware.rb:22:in `block in call'
+web-console (3.7.0) lib/web_console/middleware.rb:20:in `catch'
+web-console (3.7.0) lib/web_console/middleware.rb:20:in `call'
+actionpack (5.2.1) lib/action_dispatch/middleware/show_exceptions.rb:33:in `call'
+railties (5.2.1) lib/rails/rack/logger.rb:38:in `call_app'
+railties (5.2.1) lib/rails/rack/logger.rb:26:in `block in call'
+activesupport (5.2.1) lib/active_support/tagged_logging.rb:71:in `block in tagged'
+activesupport (5.2.1) lib/active_support/tagged_logging.rb:28:in `tagged'
+activesupport (5.2.1) lib/active_support/tagged_logging.rb:71:in `tagged'
+railties (5.2.1) lib/rails/rack/logger.rb:26:in `call'
+actionpack (5.2.1) lib/action_dispatch/middleware/remote_ip.rb:81:in `call'
+actionpack (5.2.1) lib/action_dispatch/middleware/request_id.rb:27:in `call'
+rack (2.0.6) lib/rack/method_override.rb:22:in `call'
+rack (2.0.6) lib/rack/runtime.rb:22:in `call'
+activesupport (5.2.1) lib/active_support/cache/strategy/local_cache_middleware.rb:29:in `call'
+actionpack (5.2.1) lib/action_dispatch/middleware/executor.rb:14:in `call'
+actionpack (5.2.1) lib/action_dispatch/middleware/static.rb:127:in `call'
+rack (2.0.6) lib/rack/sendfile.rb:111:in `call'
+webpacker (3.5.5) lib/webpacker/dev_server_proxy.rb:22:in `perform_request'
+rack-proxy (0.6.5) lib/rack/proxy.rb:57:in `call'
+railties (5.2.1) lib/rails/engine.rb:524:in `call'
+puma (3.12.0) lib/puma/configuration.rb:225:in `call'
+puma (3.12.0) lib/puma/server.rb:658:in `handle_request'
+puma (3.12.0) lib/puma/server.rb:472:in `process_client'
+puma (3.12.0) lib/puma/server.rb:332:in `block in run'
+puma (3.12.0) lib/puma/thread_pool.rb:133:in `block in spawn_thread'
+  [1m[35m (0.2ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+  ↳ bin/rails:4
+Migrating to AddBillingToBills (20181123001117)
+  [1m[35m (0.0ms)[0m  [1m[36mbegin transaction[0m
+  ↳ bin/rails:4
+  [1m[35m (0.3ms)[0m  [1m[35mALTER TABLE "bills" ADD "billing_id" integer[0m
+  ↳ db/migrate/20181123001117_add_billing_to_bills.rb:3
+  [1m[35m (0.1ms)[0m  [1m[34mSELECT sqlite_version(*)[0m
+  ↳ db/migrate/20181123001117_add_billing_to_bills.rb:3
+  [1m[35m (0.1ms)[0m  [1m[35mCREATE  INDEX "index_bills_on_billing_id" ON "bills" ("billing_id")[0m
+  ↳ db/migrate/20181123001117_add_billing_to_bills.rb:3
+  [1m[36mActiveRecord::SchemaMigration Create (0.2ms)[0m  [1m[32mINSERT INTO "schema_migrations" ("version") VALUES (?)[0m  [["version", "20181123001117"]]
+  ↳ bin/rails:4
+  [1m[35m (130.0ms)[0m  [1m[36mcommit transaction[0m
+  ↳ bin/rails:4
+  [1m[36mActiveRecord::InternalMetadata Load (0.3ms)[0m  [1m[34mSELECT  "ar_internal_metadata".* FROM "ar_internal_metadata" WHERE "ar_internal_metadata"."key" = ? LIMIT ?[0m  [["key", "environment"], ["LIMIT", 1]]
+  ↳ bin/rails:4
+  [1m[35m (0.1ms)[0m  [1m[36mbegin transaction[0m
+  ↳ bin/rails:4
+  [1m[35m (0.1ms)[0m  [1m[36mcommit transaction[0m
+  ↳ bin/rails:4
+  [1m[35m (0.1ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+  ↳ bin/rails:4
+Started GET "/rails/info/routes" for 172.26.0.1 at 2018-11-23 00:14:33 +0000
+Cannot render console from 172.26.0.1! Allowed networks: 127.0.0.1, ::1, 127.0.0.0/127.255.255.255
+  [1m[35m (0.1ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+  ↳ /usr/local/bundle/gems/activerecord-5.2.1/lib/active_record/log_subscriber.rb:98
+Processing by Rails::InfoController#routes as HTML
+  Rendering /usr/local/bundle/gems/railties-5.2.1/lib/rails/templates/rails/info/routes.html.erb within layouts/application
+  Rendered collection of /usr/local/bundle/gems/actionpack-5.2.1/lib/action_dispatch/middleware/templates/routes/_route.html.erb [29 times] (8.4ms)
+  Rendered /usr/local/bundle/gems/actionpack-5.2.1/lib/action_dispatch/middleware/templates/routes/_table.html.erb (0.9ms)
+  Rendered /usr/local/bundle/gems/railties-5.2.1/lib/rails/templates/rails/info/routes.html.erb within layouts/application (12.3ms)
+Completed 200 OK in 15ms (Views: 14.4ms | ActiveRecord: 0.0ms)
+
+
+  [1m[35m (0.1ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+  ↳ bin/rails:4
+Migrating to ChangeStatusInBillsToInteger (20181123005704)
+  [1m[35m (0.0ms)[0m  [1m[36mbegin transaction[0m
+  ↳ bin/rails:4
+  [1m[36mActiveRecord::SchemaMigration Create (0.3ms)[0m  [1m[32mINSERT INTO "schema_migrations" ("version") VALUES (?)[0m  [["version", "20181123005704"]]
+  ↳ bin/rails:4
+  [1m[35m (99.5ms)[0m  [1m[36mcommit transaction[0m
+  ↳ bin/rails:4
+  [1m[36mActiveRecord::InternalMetadata Load (0.3ms)[0m  [1m[34mSELECT  "ar_internal_metadata".* FROM "ar_internal_metadata" WHERE "ar_internal_metadata"."key" = ? LIMIT ?[0m  [["key", "environment"], ["LIMIT", 1]]
+  ↳ bin/rails:4
+  [1m[35m (0.1ms)[0m  [1m[36mbegin transaction[0m
+  ↳ bin/rails:4
+  [1m[35m (0.1ms)[0m  [1m[36mcommit transaction[0m
+  ↳ bin/rails:4
+  [1m[35m (0.2ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+  ↳ bin/rails:4
+  [1m[35m (0.1ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+  ↳ bin/rails:4
+  [1m[36mActiveRecord::InternalMetadata Load (0.1ms)[0m  [1m[34mSELECT  "ar_internal_metadata".* FROM "ar_internal_metadata" WHERE "ar_internal_metadata"."key" = ? LIMIT ?[0m  [["key", "environment"], ["LIMIT", 1]]
+  ↳ bin/rails:4
+  [1m[35m (0.0ms)[0m  [1m[36mbegin transaction[0m
+  ↳ bin/rails:4
+  [1m[35m (0.0ms)[0m  [1m[36mcommit transaction[0m
+  ↳ bin/rails:4
+  [1m[35m (0.1ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+  ↳ bin/rails:4
+  [1m[35m (0.2ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+  ↳ bin/rails:4
+  [1m[35m (0.1ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+  ↳ bin/rails:4
+  [1m[35m (0.1ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+  ↳ bin/rails:4
+  [1m[35m (0.1ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+  ↳ bin/rails:4
+Migrating to ChangeStatusInBillsToInteger (20181123005704)
+  [1m[35m (0.1ms)[0m  [1m[36mbegin transaction[0m
+  ↳ bin/rails:4
+  [1m[35m (0.1ms)[0m  [1m[31mrollback transaction[0m
+  ↳ bin/rails:4
+  [1m[35m (0.1ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+  ↳ bin/rails:4
+  [1m[35m (0.1ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+  ↳ bin/rails:4
+  [1m[35m (0.1ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+  ↳ bin/rails:4
+  [1m[35m (0.1ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+  ↳ bin/rails:4
+Migrating to ChangeStatusInBillsToInteger (20181123005704)
+  [1m[35m (0.0ms)[0m  [1m[36mbegin transaction[0m
+  ↳ bin/rails:4
+  [1m[36mActiveRecord::SchemaMigration Destroy (0.3ms)[0m  [1m[31mDELETE FROM "schema_migrations" WHERE "schema_migrations"."version" = ?[0m  [["version", "20181123005704"]]
+  ↳ bin/rails:4
+  [1m[35m (99.5ms)[0m  [1m[36mcommit transaction[0m
+  ↳ bin/rails:4
+  [1m[35m (0.1ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+  ↳ bin/rails:4
+  [1m[35m (0.1ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+  ↳ bin/rails:4
+Migrating to ChangeStatusInBillsToInteger (20181123005704)
+  [1m[35m (0.1ms)[0m  [1m[36mbegin transaction[0m
+  ↳ bin/rails:4
+  [1m[35m (0.1ms)[0m  [1m[34mSELECT sqlite_version(*)[0m
+  ↳ db/migrate/20181123005704_change_status_in_bills_to_integer.rb:3
+  [1m[35m (0.2ms)[0m  [1m[35mCREATE TEMPORARY TABLE "abills" ("id" integer NOT NULL PRIMARY KEY, "value" decimal DEFAULT NULL, "due_date" datetime DEFAULT NULL, "paid_date" datetime DEFAULT NULL, "status" varchar DEFAULT NULL, "month" integer DEFAULT NULL, "year" integer DEFAULT NULL, "created_at" datetime NOT NULL, "updated_at" datetime NOT NULL, "billing_id" integer DEFAULT NULL)[0m
+  ↳ db/migrate/20181123005704_change_status_in_bills_to_integer.rb:3
+  [1m[35m (0.1ms)[0m  [1m[35mCREATE  INDEX "tindex_abills_on_billing_id" ON "abills" ("billing_id")[0m
+  ↳ db/migrate/20181123005704_change_status_in_bills_to_integer.rb:3
+  [1m[35m (0.1ms)[0m  [1m[32mINSERT INTO "abills" ("id","value","due_date","paid_date","status","month","year","created_at","updated_at","billing_id")
+                     SELECT "id","value","due_date","paid_date","status","month","year","created_at","updated_at","billing_id" FROM "bills"[0m
+  ↳ db/migrate/20181123005704_change_status_in_bills_to_integer.rb:3
+  [1m[35m (0.3ms)[0m  [1m[35mDROP TABLE "bills"[0m
+  ↳ db/migrate/20181123005704_change_status_in_bills_to_integer.rb:3
+  [1m[35m (0.1ms)[0m  [1m[35mCREATE TABLE "bills" ("id" integer NOT NULL PRIMARY KEY, "value" decimal DEFAULT NULL, "due_date" datetime DEFAULT NULL, "paid_date" datetime DEFAULT NULL, "status" integer DEFAULT NULL, "month" integer DEFAULT NULL, "year" integer DEFAULT NULL, "created_at" datetime NOT NULL, "updated_at" datetime NOT NULL, "billing_id" integer DEFAULT NULL)[0m
+  ↳ db/migrate/20181123005704_change_status_in_bills_to_integer.rb:3
+  [1m[35m (0.1ms)[0m  [1m[35mCREATE  INDEX "index_bills_on_billing_id" ON "bills" ("billing_id")[0m
+  ↳ db/migrate/20181123005704_change_status_in_bills_to_integer.rb:3
+  [1m[35m (0.1ms)[0m  [1m[32mINSERT INTO "bills" ("id","value","due_date","paid_date","status","month","year","created_at","updated_at","billing_id")
+                     SELECT "id","value","due_date","paid_date","status","month","year","created_at","updated_at","billing_id" FROM "abills"[0m
+  ↳ db/migrate/20181123005704_change_status_in_bills_to_integer.rb:3
+  [1m[35m (0.1ms)[0m  [1m[35mDROP TABLE "abills"[0m
+  ↳ db/migrate/20181123005704_change_status_in_bills_to_integer.rb:3
+  [1m[36mActiveRecord::SchemaMigration Create (0.2ms)[0m  [1m[32mINSERT INTO "schema_migrations" ("version") VALUES (?)[0m  [["version", "20181123005704"]]
+  ↳ bin/rails:4
+  [1m[35m (119.3ms)[0m  [1m[36mcommit transaction[0m
+  ↳ bin/rails:4
+  [1m[36mActiveRecord::InternalMetadata Load (0.2ms)[0m  [1m[34mSELECT  "ar_internal_metadata".* FROM "ar_internal_metadata" WHERE "ar_internal_metadata"."key" = ? LIMIT ?[0m  [["key", "environment"], ["LIMIT", 1]]
+  ↳ bin/rails:4
+  [1m[35m (0.1ms)[0m  [1m[36mbegin transaction[0m
+  ↳ bin/rails:4
+  [1m[35m (0.1ms)[0m  [1m[36mcommit transaction[0m
+  ↳ bin/rails:4
+  [1m[35m (0.2ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+  ↳ bin/rails:4
+Started GET "//api/v1/students/1/billings/1bills" for 172.26.0.1 at 2018-11-23 01:12:33 +0000
+Cannot render console from 172.26.0.1! Allowed networks: 127.0.0.1, ::1, 127.0.0.0/127.255.255.255
+  [1m[35m (0.1ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+  ↳ /usr/local/bundle/gems/activerecord-5.2.1/lib/active_record/log_subscriber.rb:98
+Processing by Api::V1::BillingsController#show as HTML
+  Parameters: {"student_id"=>"1", "id"=>"1bills"}
+  [1m[36mBilling Load (0.2ms)[0m  [1m[34mSELECT  "billings".* FROM "billings" WHERE "billings"."id" = ? AND "billings"."student_id" = ? LIMIT ?[0m  [["id", 1], ["student_id", 1], ["LIMIT", 1]]
+  ↳ app/controllers/api/v1/billings_controller.rb:44
+Completed 200 OK in 11ms (Views: 0.2ms | ActiveRecord: 0.6ms)
+
+

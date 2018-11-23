@@ -2,7 +2,7 @@
 
 require 'rails_helper'
 
-RSpec.describe 'Students', type: :request do
+RSpec.describe 'Admissions', type: :request do
   let!(:student)   { create(:student, :with_admissions) }
   let!(:student_2) { create(:student, :with_admissions) }
 

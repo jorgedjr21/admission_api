@@ -2,7 +2,7 @@
 
 require 'rails_helper'
 
-RSpec.describe 'Students', type: :request do
+RSpec.describe 'Billings', type: :request do
   let!(:student) { create(:student, :with_billings) }
 
   describe 'GET students/:student_id/billings' do
@@ -19,7 +19,7 @@ RSpec.describe 'Students', type: :request do
 
   describe 'POST students/:student_id/billings' do
     context 'when the request is valid' do
-      before { post api_v1_student_billings_path(student_id: student.id), params: { desired_due_day: 15, parcels_number: 3 } }
+      before { post api_v1_student_billings_path(student_id: student.id), params: { desired_due_day: 15, parcels_number: 3, value: 759.90 } }
 
       it 'must create a new admission' do
         expect(response.body).to eq(Billing.last.to_json)
@@ -31,7 +31,7 @@ RSpec.describe 'Students', type: :request do
     end
 
     context 'when the request is invalid' do
-      before { post api_v1_student_billings_path(student_id: student.id), params: { desired_due_day: '', parcels_number: 0 } }
+      before { post api_v1_student_billings_path(student_id: student.id), params: { desired_due_day: '', parcels_number: 0, value: 0.00 } }
 
       it 'must have http status 422' do
         expect(response).to have_http_status(:unprocessable_entity)

@@ -11,15 +11,15 @@ default: &default
 
 development:
   <<: *default
-  database: admission_api_dev
+  database: db/admission_api_dev.sqlite3
 
 # Warning: The database defined as "test" will be erased and
 # re-generated from your development database when you run "rake".
 # Do not set this db to the same as development or production.
 test:
   <<: *default
-  database: admission_api_test
+  database: db/admission_api_test.sqlite3
 
 production:
   <<: *default
-  database: admission_api_prod
+  database: db/admission_api_prod.sqlite3

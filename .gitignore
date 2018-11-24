@@ -1,5 +1,5 @@
-db/development.sqlite3
-db/test.sqlite3
+db/admission_api_dev.sqlite3
+db/admission_api_dev_test.sqlite3
 coverage/*
 tmp/*
 log/*

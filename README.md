@@ -10,6 +10,7 @@ O projeto foi criado em cima da base passada, com alguns adicionais:
 - Adicionado SimpleCov para covertura de testes (está com 99,02% de cobertura, segundo a ferramenta)
 - Ambiente criado com o Docker e cocker-compose (arquivos estão disponíveis no repositório)
 - Ajustes e criações de migrations necessárias para implementação
+- Os pagamentos gerados para cada mensalidade são dos dois tipos (cartão e boleto), dessa forma, o aluno fica com o poder de escolha sobre qual maneira vai pagar.
 
 
 ## Ambiente Heroku

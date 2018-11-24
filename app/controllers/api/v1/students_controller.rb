@@ -2,7 +2,7 @@
 
 module Api
   module V1
-    class StudentsController < ApplicationController
+    class StudentsController < ApiApplicationController
       before_action :set_student, only: %i[show edit update destroy]
 
       # GET /students

@@ -2,7 +2,7 @@
 
 module Api
   module V1
-    class BillingsController < ApplicationController
+    class BillingsController < ApiApplicationController
       before_action :set_billing, only: %i[show edit update destroy]
 
       # GET students/:student_id/billings

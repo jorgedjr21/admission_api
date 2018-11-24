@@ -2,7 +2,7 @@
 
 module Api
   module V1
-    class PaymentsController < ApplicationController
+    class PaymentsController < ApiApplicationController
       before_action :set_payment, only: %i[show]
 
       # GET /api/v1/students/:student_id/billings/:billing_id/bills/:bill_id/payments

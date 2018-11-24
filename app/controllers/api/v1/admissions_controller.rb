@@ -2,7 +2,7 @@
 
 module Api
   module V1
-    class AdmissionsController < ApplicationController
+    class AdmissionsController < ApiApplicationController
       before_action :set_admission, only: %i[show edit update destroy]
 
       # GET students/:student_id/admissions

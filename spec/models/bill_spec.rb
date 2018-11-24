@@ -4,6 +4,29 @@ require 'rails_helper'
 
 RSpec.describe Bill, type: :model do
   let!(:billing) { create(:billing) }
+
+  describe 'as_json' do
+    let!(:bill) { create(:bill) }
+
+    it 'must return the correct json' do
+
+      json = {
+        "id": bill.id,
+        "value": bill.value.to_s,
+        "due_date": bill.due_date.strftime('%Y-%m-%dT%H:%M:%S.%L%:z'),
+        "status": bill.status.to_s,
+        "month": bill.month,
+        "year": bill.year,
+        "created_at": bill.created_at.strftime('%Y-%m-%dT%H:%M:%S.%L%:z'),
+        "updated_at": bill.updated_at.strftime('%Y-%m-%dT%H:%M:%S.%L%:z'),
+        "payments": []
+      }
+
+      expect(bill.to_json).to include_json(json)
+    end
+  end
+
+
   describe '#calculate_bill_month' do
     context 'when today is bigger than desired_due_day' do
       it 'must return the bill_month with one month plus' do

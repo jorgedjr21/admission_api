@@ -32,14 +32,22 @@ module Api
 
       # PATCH/PUT students/:student_id/billings/:id
       def update
-        @billing.update(billing_params)
-        head :no_content
+        if @billing.bills.present?
+          json_response('Can\'t update billing because it already have bills', :forbidden)
+        else
+          @billing.update(billing_params)
+          head :no_content
+        end
       end
 
       # DELETE students/:student_id/billings/:id
       def destroy
-        @billing.destroy
-        head :no_content
+        if @billing.bills.present?
+          json_response('Can\'t update billing because it already have bills', :forbidden)
+        else
+          @billing.destroy
+          head :no_content
+        end
       end
 
       private

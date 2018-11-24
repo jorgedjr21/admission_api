@@ -1,0 +1,86 @@
+<div class="row mt-3" id="billings">
+  <div class="col-md-12">
+    <div class="card">
+      <div class="card-header bg-primary text-white">
+        Billings API
+      </div>
+      <div class="card-body">
+
+        <h5 class="card-title">Get all billings from student</h5>
+        <p class="card-text"><strong>GET </strong><%= request.base_url %>/api/v1/students/:student_id/billings</p>
+        <p class="card-text text-danger">Parameters required: </p>
+        <p class="card-text ">
+          <ul>
+            <li><strong>student_id (integer):</strong> The student id</li>
+          </ul>
+        </p>
+
+        <hr/>
+
+        <h5 class="card-title">Get one billings from student</h5>
+        <p class="card-text"><strong>GET </strong><%= request.base_url %>api/v1/students/:student_id/billings/:id</p>
+        <p class="card-text text-danger">Parameters required: </p>
+        <p class="card-text ">
+          <ul>
+            <li><strong>id (integer):</strong> The billing id</li>
+            <li><strong>student_id (integer):</strong> The student id</li>
+          </ul>
+        </p>
+
+        <hr/>
+
+        <h5 class="card-title">Create a new billing</h5>
+        <p class="card-text"><strong>POST </strong><%= request.base_url %>/api/v1/students/:student_id/billings</p>
+        <p class="card-text text-danger">Parameters required: </p>
+        <p class="card-text ">
+          <ul>
+            <li><strong>student_id (integer):</strong> The student id</li>
+            <li><strong>desired_due_day (integer):</strong> The desired payment day for the billing</li>
+            <li><strong>parcels_number (integer):</strong> The desired parcels_number for the billing</li>
+            <li><strong>value (float):</strong> The value of the parcel billing</li>
+          </ul>
+        </p>
+
+        <hr/>
+
+        <h5 class="card-title">Update a billing</h5>
+        <p class="card-text"><strong>PUT </strong><%= request.base_url %> /api/v1/students/:student_id/admissions/:id</p>
+        <p class="card-text text-danger">Parameters required: </p>
+        <p class="card-text ">
+          <ul>
+            <li><strong>id (integer):</strong> The billing id</li>
+            <li><strong>student_id (integer):</strong> The student id</li>
+          </ul>
+        </p>
+
+        <p class="card-text text-info">Optional parameters (at least one): </p>
+        <p class="card-text ">
+          <ul>
+            <li><strong>desired_due_day (integer):</strong> The desired payment day for the billing</li>
+            <li><strong>parcels_number (integer):</strong> The desired parcels_number for the billing</li>
+            <li><strong>value (float):</strong> The value of the parcel billing</li>
+          </ul>
+        </p>
+        <p>
+          <small>A billing can be updated only if doesn't have any bills atached to it</small>
+        </p>
+
+        <hr/>
+
+        <h5 class="card-title">Delete a billing</h5>
+        <p class="card-text"><strong>DELETE </strong><%= request.base_url %> /api/v1/students/:student_id/admissions/:id</p>
+        <p class="card-text text-danger">Parameters required: </p>
+        <p class="card-text ">
+          <ul>
+            <li><strong>id (integer):</strong> The billing id</li>
+            <li><strong>student_id (integer):</strong> The student id</li>
+          </ul>
+        </p>
+
+        <p>
+          <small>A billing can be deleted only if doesn't have any bills atached to it</small>
+        </p>
+      </div>
+    </div>
+  </div>
+</div>

@@ -1,64 +1,68 @@
-<div class="card">
-  <div class="card-header bg-primary text-white">
-    Students API
-  </div>
-  <div class="card-body">
+<div class="row" id="students">
+  <div class="col-md-12">
+    <div class="card">
+      <div class="card-header bg-primary text-white">
+        Students API
+      </div>
+      <div class="card-body">
 
-    <h5 class="card-title">Get all students</h5>
-    <p class="card-text"><strong>GET </strong><%= request.base_url %>/api/v1/students</p>
-    <p class="card-text text-success">No parameter is required</p>
+        <h5 class="card-title">Get all students</h5>
+        <p class="card-text"><strong>GET </strong><%= request.base_url %>/api/v1/students</p>
+        <p class="card-text text-success">No parameter is required</p>
 
-    <hr/>
+        <hr/>
 
-    <h5 class="card-title">Get one specific student</h5>
-    <p class="card-text"><strong>GET </strong><%= request.base_url %>/api/v1/students/:id</p>
-    <p class="card-text text-danger">Parameters required: </p>
-    <p class="card-text ">
-      <ul>
-        <li><strong>id:</strong> The student id</li>
-      </ul>
-    </p>
+        <h5 class="card-title">Get one specific student</h5>
+        <p class="card-text"><strong>GET </strong><%= request.base_url %>/api/v1/students/:id</p>
+        <p class="card-text text-danger">Parameters required: </p>
+        <p class="card-text ">
+          <ul>
+            <li><strong>id (integer):</strong> The student id</li>
+          </ul>
+        </p>
 
-    <hr/>
+        <hr/>
 
-    <h5 class="card-title">Create a new student</h5>
-    <p class="card-text"><strong>POST </strong><%= request.base_url %>/api/v1/students</p>
-    <p class="card-text text-danger">Parameters required: </p>
-    <p class="card-text ">
-      <ul>
-        <li><strong>name:</strong> The student name</li>
-        <li><strong>cpf:</strong> The student cpf</li>
-      </ul>
-    </p>
+        <h5 class="card-title">Create a new student</h5>
+        <p class="card-text"><strong>POST </strong><%= request.base_url %>/api/v1/students</p>
+        <p class="card-text text-danger">Parameters required: </p>
+        <p class="card-text ">
+          <ul>
+            <li><strong>name (string):</strong> The student name</li>
+            <li><strong>cpf (string):</strong> The student cpf</li>
+          </ul>
+        </p>
 
-    <hr/>
+        <hr/>
 
-    <h5 class="card-title">Update a student</h5>
-    <p class="card-text"><strong>PUT </strong><%= request.base_url %> /api/v1/students/:id</p>
-    <p class="card-text text-danger">Parameters required: </p>
-    <p class="card-text ">
-      <ul>
-        <li><strong>id:</strong> The student id</li>
-      </ul>
-    </p>
+        <h5 class="card-title">Update a student</h5>
+        <p class="card-text"><strong>PUT </strong><%= request.base_url %> /api/v1/students/:id</p>
+        <p class="card-text text-danger">Parameters required: </p>
+        <p class="card-text ">
+          <ul>
+            <li><strong>id (integer):</strong> The student id</li>
+          </ul>
+        </p>
 
-    <p class="card-text text-info">Optional parameters: </p>
-    <p class="card-text ">
-      <ul>
-        <li><strong>name:</strong> The student name</li>
-        <li><strong>cpf:</strong> The student cpf</li>
-      </ul>
-    </p>
+        <p class="card-text text-info">Optional parameters (at least one): </p>
+        <p class="card-text ">
+          <ul>
+            <li><strong>name (string):</strong> The student name</li>
+            <li><strong>cpf (string):</strong> The student cpf</li>
+          </ul>
+        </p>
 
-    <hr/>
+        <hr/>
 
-    <h5 class="card-title">Delete a student</h5>
-    <p class="card-text"><strong>DELETE </strong><%= request.base_url %> /api/v1/students/:id</p>
-    <p class="card-text text-danger">Parameters required: </p>
-    <p class="card-text ">
-      <ul>
-        <li><strong>id:</strong> The student id</li>
-      </ul>
-    </p>
+        <h5 class="card-title">Delete a student</h5>
+        <p class="card-text"><strong>DELETE </strong><%= request.base_url %> /api/v1/students/:id</p>
+        <p class="card-text text-danger">Parameters required: </p>
+        <p class="card-text ">
+          <ul>
+            <li><strong>id (integer):</strong> The student id</li>
+          </ul>
+        </p>
+      </div>
+    </div>
   </div>
 </div>

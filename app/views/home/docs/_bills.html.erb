@@ -1,0 +1,39 @@
+<div class="row mt-3" id="bills">
+  <div class="col-md-12">
+    <div class="card">
+      <div class="card-header bg-primary text-white">
+        Bills API
+      </div>
+      <div class="card-body">
+
+        <h5 class="card-title">Get all bills from student</h5>
+        <p class="card-text"><strong>GET </strong><%= request.base_url %>/api/v1/students/:student_id/billings/:billing_id/bills</p>
+        <p class="card-text text-danger">Parameters required: </p>
+        <p class="card-text ">
+          <ul>
+            <li><strong>billing_id (integer):</strong> The billing id</li>
+            <li><strong>student_id (integer):</strong> The student id</li>
+          </ul>
+        </p>
+
+        <hr/>
+
+        <h5 class="card-title">Get one bill from billing of a student</h5>
+        <p class="card-text"><strong>GET </strong><%= request.base_url %>/api/v1/students/:student_id/billings/:billing_id/bills/:id</p>
+        <p class="card-text text-danger">Parameters required: </p>
+        <p class="card-text ">
+          <ul>
+            <li><strong>id (integer):</strong> The bill  id</li>
+            <li><strong>billing_id (integer):</strong> The billing id</li>
+            <li><strong>student_id (integer):</strong> The student id</li>
+          </ul>
+        </p>
+
+        <hr/>
+
+        <h5 class="card-title">Create bills</h5>
+        <p class="card-text">The bills are created automatically when the billing is created</p>
+      </div>
+    </div>
+  </div>
+</div>

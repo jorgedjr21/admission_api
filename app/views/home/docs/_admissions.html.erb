@@ -1,0 +1,69 @@
+<div class="row mt-3" id="admissions">
+  <div class="col-md-12">
+    <div class="card">
+      <div class="card-header bg-primary text-white">
+         Admissions API
+      </div>
+      <div class="card-body">
+
+        <h5 class="card-title">Get all admissions from student</h5>
+        <p class="card-text"><strong>GET </strong><%= request.base_url %>/api/v1/students/:student_id/admissions</p>
+        <p class="card-text text-danger">Parameters required: </p>
+        <p class="card-text ">
+          <ul>
+            <li><strong>student_id (integer):</strong> The student id</li>
+          </ul>
+        </p>
+
+        <hr/>
+
+        <h5 class="card-title">Get one specific admission from student</h5>
+        <p class="card-text"><strong>GET </strong><%= request.base_url %>/api/v1/students/:student_id/admissions/:id</p>
+        <p class="card-text text-danger">Parameters required: </p>
+        <p class="card-text ">
+          <ul>
+            <li><strong>id (integer):</strong> The admission id</li>
+            <li><strong>student_id (integer):</strong> The student id</li>
+          </ul>
+        </p>
+
+        <hr/>
+
+        <h5 class="card-title">Create a new admission to student</h5>
+        <p class="card-text"><strong>POST </strong><%= request.base_url %>/api/v1/students/:student_id/admissions</p>
+        <p class="card-text text-danger">Parameters required: </p>
+        <p class="card-text ">
+          <ul>
+            <li><strong>student_id (integer):</strong> The student id</li>
+            <li><strong>enem_grade (integer):</strong> The student enem grade</li>
+          </ul>
+        </p>
+
+        <hr/>
+
+        <h5 class="card-title">Update a admission from student</h5>
+        <p class="card-text"><strong>PUT </strong><%= request.base_url %> /api/v1/students/:student_id/admissions/:id</p>
+        <p class="card-text text-danger">Parameters required: </p>
+        <p class="card-text ">
+          <ul>
+            <li><strong>id (integer):</strong> The admission id</li>
+            <li><strong>student_id (integer):</strong> The student id</li>
+            <li><strong>enem_grade (integer):</strong> The student enem grade</li>
+          </ul>
+        </p>
+
+        <hr/>
+
+        <h5 class="card-title">Delete a admission from student</h5>
+        <p class="card-text"><strong>DELETE </strong><%= request.base_url %> /api/v1/students/:student_id/admissions/:id</p>
+        <p class="card-text text-danger">Parameters required: </p>
+        <p class="card-text ">
+          <ul>
+            <li><strong>id (integer):</strong> The admission id</li>
+            <li><strong>student_id (integer):</strong> The student id</li>
+          </ul>
+        </p>
+      </div>
+    </div>
+  </div>
+</div>

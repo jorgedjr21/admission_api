@@ -5,7 +5,7 @@ require 'rails_helper'
 RSpec.describe 'Billings', type: :request do
   let!(:student) { create(:student, :with_billings) }
 
-  describe 'GET students/:student_id/billings' do
+  describe 'GET /api/v1/students/:student_id/billings' do
     before { get api_v1_student_billings_path(student_id: student.id) }
     it 'must return all billings' do
       expect(response.body).to eq(student.billings.to_json)
@@ -16,7 +16,7 @@ RSpec.describe 'Billings', type: :request do
     end
   end
 
-  describe 'GET students/:student_id/billings/:id' do
+  describe 'GET api/v1/students/:student_id/billings/:id' do
     before { get api_v1_student_billing_path(id: student.billings.first, student_id: student.id) }
     it 'must return a billing information' do
       expect(response.body).to eq(student.billings.first.to_json)
@@ -27,7 +27,7 @@ RSpec.describe 'Billings', type: :request do
     end
   end
 
-  describe 'POST students/:student_id/billings' do
+  describe 'POST /api/v1/students/:student_id/billings' do
     context 'when the request is valid' do
       before { post api_v1_student_billings_path(student_id: student.id), params: { desired_due_day: 15, parcels_number: 3, value: 759.90 } }
 
@@ -92,37 +92,76 @@ RSpec.describe 'Billings', type: :request do
     end
   end
 
-  describe 'PUT /update' do
+  describe 'PUT api/v1/students/:student_id/billings/:id' do
     context 'when the billing exists' do
-      before { put api_v1_student_billing_path(student_id: student.id, id: student.billings.first.id), params: { desired_due_day: '19', parcels_number: 10 } }
+      context 'when the billing dont have bills' do
+        before { put api_v1_student_billing_path(student_id: student.id, id: student.billings.first.id), params: { desired_due_day: '19', parcels_number: 10 } }
+        it 'must update the billing due date' do
+          expect(Billing.first.desired_due_day).to eq(19)
+        end
 
-      it 'must update the billing due date' do
-        expect(Billing.first.desired_due_day).to eq(19)
-      end
-      it 'must update the billing parcels number' do
-        expect(Billing.first.parcels_number).to eq(10)
+        it 'must update the billing parcels number' do
+          expect(Billing.first.parcels_number).to eq(10)
+        end
+
+        it 'must return empty response' do
+          expect(response.body).to be_empty
+        end
+
+        it 'must have http status 204' do
+          expect(response).to have_http_status(:no_content)
+        end
       end
 
-      it 'must return empty response' do
-        expect(response.body).to be_empty
+      context 'when the billing have bills' do
+        let!(:student_with_billings_with_bills) { create(:student, :with_billings, desired_due_day: 22, parcels_number: 5) }
+        let!(:bills) { create_list(:bill, 5, billing: student_with_billings_with_bills.billings.first) }
+
+        before { put api_v1_student_billing_path(id: student_with_billings_with_bills.billings.first.id, student_id: student_with_billings_with_bills.id), params: { desired_due_day: '19', parcels_number: 10 } }
+
+        it 'must not update the billing due date' do
+          expect(Billing.find(student_with_billings_with_bills.billings.first.id).desired_due_day).to eq(22)
+        end
+
+        it 'must not update the billing parcels_number' do
+          expect(Billing.find(student_with_billings_with_bills.billings.first.id).parcels_number).to eq(5)
+        end
+
+        it 'must have http status 403' do
+          expect(response).to have_http_status(:forbidden)
+        end
       end
 
-      it 'must have http status 204' do
-        expect(response).to have_http_status(:no_content)
-      end
     end
   end
 
   describe 'DELETE /destroy' do
     context 'when the billing exists' do
-      before { delete api_v1_student_billing_path(student_id: student.id, id: student.billings.first.id) }
+      context 'when the billing dont have bills' do
+        before { delete api_v1_student_billing_path(id: student.billings.first.id, student_id: student.id) }
 
-      it 'must return empty response' do
-        expect(response.body).to be_empty
+        it 'must return empty response' do
+          expect(response.body).to be_empty
+        end
+
+        it 'must have http status 204' do
+          expect(response).to have_http_status(:no_content)
+        end
       end
 
-      it 'must have http status 204' do
-        expect(response).to have_http_status(:no_content)
+      context 'when the billing have bills' do
+        let!(:student_with_billings_with_bills) { create(:student, :with_billings) }
+        let!(:bills) { create_list(:bill, 5, billing: student_with_billings_with_bills.billings.first) }
+
+        before { delete api_v1_student_billing_path(id: student_with_billings_with_bills.billings.first.id, student_id: student_with_billings_with_bills.id) }
+
+        it 'must not delete the billing' do
+          expect(student_with_billings_with_bills.billings.count).to eq(5)
+        end
+
+        it 'must have http status 403' do
+          expect(response).to have_http_status(:forbidden)
+        end
       end
     end
   end

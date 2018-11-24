@@ -13,14 +13,23 @@ RSpec.describe 'Students', type: :request do
   end
 
   describe 'GET /api/v1/students/:id' do
-    before { get api_v1_student_path(id: students.first.id) }
+    context 'when the student exists' do
+      before { get api_v1_student_path(id: students.first.id) }
 
-    it 'must return a student information' do
-      expect(response.body).to eq(students.first.to_json)
+      it 'must return a student information' do
+        expect(response.body).to eq(students.first.to_json)
+      end
+
+      it 'must have http status 200' do
+        expect(response).to have_http_status(:ok)
+      end
     end
 
-    it 'must have http status 200' do
-      expect(response).to have_http_status(:ok)
+    context 'when the student doesn\' exists' do
+      before { get api_v1_student_path(id: 999) }
+      it 'must have http status 404' do
+        expect(response).to have_http_status(404)
+      end
     end
   end
 

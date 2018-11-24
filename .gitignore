@@ -3,3 +3,4 @@ tmp/*
 tmp/cache/*
 db/development.sqlite3
 db/test.sqlite3
+coverage/*

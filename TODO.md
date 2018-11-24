@@ -14,4 +14,3 @@ Sugestões de melhorias
 - Refatoração das factories para melhor uso das mesmas
 - Ajuste no retorno do erro quando não é possivel criar um billing (devido a erros na geração das bills ou payments)
 - Internacionalização das mensagens de erro
-- 

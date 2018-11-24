@@ -18,7 +18,12 @@ module Api
       # POST students/:student_id/billings
       def create
         @billing = Billing.new(billing_params)
-        @billing.save!
+        ActiveRecord::Base.transaction do
+          ActiveRecord::Rollback unless @billing.save! && Bill.save_from_billing!(@billing,
+                                                                                  @billing.desired_due_day,
+                                                                                  @billing.parcels_number,
+                                                                                  bill_params[:value])
+        end
         json_response(@billing, :created)
       end
 

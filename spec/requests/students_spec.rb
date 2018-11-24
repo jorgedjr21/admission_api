@@ -15,7 +15,7 @@ RSpec.describe 'Students', type: :request do
   describe 'GET /students/:id' do
     before { get api_v1_student_path(id: students.first.id) }
 
-    it 'must show a student information' do
+    it 'must return a student information' do
       expect(response.body).to eq(students.first.to_json)
     end
 

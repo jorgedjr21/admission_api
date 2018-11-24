@@ -30,7 +30,11 @@ RSpec.describe Bill, type: :model do
   end
   describe '#create_bill_by_billing' do
     it 'must create the bill with the desired_due_day, parcels_number and value' do
-      expect { Bill.save_from_billing(billing, 15, 3, 725.25) }.to change(Bill, :count).by(3)
+      expect { Bill.save_from_billing!(billing, 15, 3, 725.25) }.to change(Bill, :count).by(3)
+    end
+
+    it 'must raise ActiveRecord::RecordInvalid if can\'t save the bill' do
+      expect { Bill.save_from_billing!(billing, 15, 3, 0.00) }.to raise_error(ActiveRecord::RecordInvalid)
     end
   end
 end

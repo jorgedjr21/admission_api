@@ -671,3 +671,62 @@ Processing by Api::V1::BillingsController#show as HTML
 Completed 200 OK in 11ms (Views: 0.2ms | ActiveRecord: 0.6ms)
 
 
+  [1m[35m (0.3ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+  ↳ bin/rails:4
+Migrating to ChangeStatusInBillingToInteger (20181124041524)
+  [1m[35m (0.1ms)[0m  [1m[36mbegin transaction[0m
+  ↳ bin/rails:4
+  [1m[35m (0.1ms)[0m  [1m[34mSELECT sqlite_version(*)[0m
+  ↳ db/migrate/20181124041524_change_status_in_billing_to_integer.rb:3
+  [1m[35m (0.2ms)[0m  [1m[35mCREATE TEMPORARY TABLE "abillings" ("id" integer NOT NULL PRIMARY KEY, "desired_due_day" integer DEFAULT NULL, "status" varchar DEFAULT NULL, "created_at" datetime NOT NULL, "updated_at" datetime NOT NULL, "student_id" integer DEFAULT NULL, "parcels_number" integer DEFAULT 0)[0m
+  ↳ db/migrate/20181124041524_change_status_in_billing_to_integer.rb:3
+  [1m[35m (0.1ms)[0m  [1m[35mCREATE  INDEX "tindex_abillings_on_student_id" ON "abillings" ("student_id")[0m
+  ↳ db/migrate/20181124041524_change_status_in_billing_to_integer.rb:3
+  [1m[35m (0.1ms)[0m  [1m[32mINSERT INTO "abillings" ("id","desired_due_day","status","created_at","updated_at","student_id","parcels_number")
+                     SELECT "id","desired_due_day","status","created_at","updated_at","student_id","parcels_number" FROM "billings"[0m
+  ↳ db/migrate/20181124041524_change_status_in_billing_to_integer.rb:3
+  [1m[35m (0.8ms)[0m  [1m[35mDROP TABLE "billings"[0m
+  ↳ db/migrate/20181124041524_change_status_in_billing_to_integer.rb:3
+  [1m[35m (0.2ms)[0m  [1m[35mCREATE TABLE "billings" ("id" integer NOT NULL PRIMARY KEY, "desired_due_day" integer DEFAULT NULL, "status" integer DEFAULT NULL, "created_at" datetime NOT NULL, "updated_at" datetime NOT NULL, "student_id" integer DEFAULT NULL, "parcels_number" integer DEFAULT 0)[0m
+  ↳ db/migrate/20181124041524_change_status_in_billing_to_integer.rb:3
+  [1m[35m (0.1ms)[0m  [1m[35mCREATE  INDEX "index_billings_on_student_id" ON "billings" ("student_id")[0m
+  ↳ db/migrate/20181124041524_change_status_in_billing_to_integer.rb:3
+  [1m[35m (0.1ms)[0m  [1m[32mINSERT INTO "billings" ("id","desired_due_day","status","created_at","updated_at","student_id","parcels_number")
+                     SELECT "id","desired_due_day","status","created_at","updated_at","student_id","parcels_number" FROM "abillings"[0m
+  ↳ db/migrate/20181124041524_change_status_in_billing_to_integer.rb:3
+  [1m[35m (0.1ms)[0m  [1m[35mDROP TABLE "abillings"[0m
+  ↳ db/migrate/20181124041524_change_status_in_billing_to_integer.rb:3
+  [1m[36mActiveRecord::SchemaMigration Create (0.2ms)[0m  [1m[32mINSERT INTO "schema_migrations" ("version") VALUES (?)[0m  [["version", "20181124041524"]]
+  ↳ bin/rails:4
+  [1m[35m (279.3ms)[0m  [1m[36mcommit transaction[0m
+  ↳ bin/rails:4
+  [1m[36mActiveRecord::InternalMetadata Load (0.2ms)[0m  [1m[34mSELECT  "ar_internal_metadata".* FROM "ar_internal_metadata" WHERE "ar_internal_metadata"."key" = ? LIMIT ?[0m  [["key", "environment"], ["LIMIT", 1]]
+  ↳ bin/rails:4
+  [1m[35m (0.1ms)[0m  [1m[36mbegin transaction[0m
+  ↳ bin/rails:4
+  [1m[35m (0.1ms)[0m  [1m[36mcommit transaction[0m
+  ↳ bin/rails:4
+  [1m[35m (0.2ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+  ↳ bin/rails:4
+Started GET "/rails/info/routes" for 172.26.0.1 at 2018-11-24 04:28:57 +0000
+Cannot render console from 172.26.0.1! Allowed networks: 127.0.0.1, ::1, 127.0.0.0/127.255.255.255
+  [1m[35m (0.1ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+  ↳ /usr/local/bundle/gems/activerecord-5.2.1/lib/active_record/log_subscriber.rb:98
+Processing by Rails::InfoController#routes as HTML
+  Rendering /usr/local/bundle/gems/railties-5.2.1/lib/rails/templates/rails/info/routes.html.erb within layouts/application
+  Rendered collection of /usr/local/bundle/gems/actionpack-5.2.1/lib/action_dispatch/middleware/templates/routes/_route.html.erb [29 times] (27.7ms)
+  Rendered /usr/local/bundle/gems/actionpack-5.2.1/lib/action_dispatch/middleware/templates/routes/_table.html.erb (36.6ms)
+  Rendered /usr/local/bundle/gems/railties-5.2.1/lib/rails/templates/rails/info/routes.html.erb within layouts/application (97.1ms)
+Completed 200 OK in 140ms (Views: 126.1ms | ActiveRecord: 0.0ms)
+
+
+Started GET "/rails/info/routes" for 172.26.0.1 at 2018-11-24 04:30:58 +0000
+Cannot render console from 172.26.0.1! Allowed networks: 127.0.0.1, ::1, 127.0.0.0/127.255.255.255
+Processing by Rails::InfoController#routes as HTML
+  Rendering /usr/local/bundle/gems/railties-5.2.1/lib/rails/templates/rails/info/routes.html.erb within layouts/application
+  Rendered collection of /usr/local/bundle/gems/actionpack-5.2.1/lib/action_dispatch/middleware/templates/routes/_route.html.erb [25 times] (6.1ms)
+  Rendered /usr/local/bundle/gems/actionpack-5.2.1/lib/action_dispatch/middleware/templates/routes/_table.html.erb (1.1ms)
+  Rendered /usr/local/bundle/gems/railties-5.2.1/lib/rails/templates/rails/info/routes.html.erb within layouts/application (10.1ms)
+Completed 200 OK in 13ms (Views: 11.9ms | ActiveRecord: 0.0ms)
+
+

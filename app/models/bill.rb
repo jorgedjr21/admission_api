@@ -8,9 +8,12 @@ class Bill < ApplicationRecord
              presence: true,
              numericality: { only_integer: true, greater_than: 0 }
 
-  enum       status: %i[waiting paid]
+  validates :value, presence: true, numericality: { greater_than: 0 }
+  enum      status: %i[waiting paid]
 
-  def self.save_from_billing(billing, desired_due_day, parcels_number, value)
+  def self.save_from_billing!(billing, desired_due_day, parcels_number, value)
+    raise ActiveRecord::RecordInvalid if parcels_number.zero? || desired_due_day.zero?
+
     month = calculate_start_bill_month(desired_due_day, Time.zone.now.strftime('%m'))
     payment_start = format_bill_date(desired_due_day, month)
     parcels_number.times do |i|
@@ -21,10 +24,9 @@ class Bill < ApplicationRecord
                       year:  payment_date.strftime('%Y'),
                       status: :waiting,
                       billing: billing)
-      bill.save
+      raise ActiveRecord::RecordInvalid unless bill.save
     end
   end
-
 
   def self.calculate_start_bill_month(desired_due_day, month)
     date = format_bill_date(desired_due_day, month)
@@ -34,7 +36,8 @@ class Bill < ApplicationRecord
   end
 
   def self.get_payment_date(payment_date, parcel)
-    return payment_date if parcel == 0
+    return payment_date if parcel.zero?
+
     payment_date + parcel.month
   end
 

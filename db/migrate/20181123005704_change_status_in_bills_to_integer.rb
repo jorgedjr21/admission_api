@@ -1,5 +1,6 @@
 class ChangeStatusInBillsToInteger < ActiveRecord::Migration[5.2]
   def change
-    change_column :bills, :status, :integer
+    remove_column :admissions, :status
+    add_column :admissions, :status, :integer
   end
 end

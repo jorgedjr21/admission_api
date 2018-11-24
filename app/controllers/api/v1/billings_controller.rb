@@ -19,10 +19,13 @@ module Api
       def create
         @billing = Billing.new(billing_params)
         ActiveRecord::Base.transaction do
-          ActiveRecord::Rollback unless @billing.save! && Bill.save_from_billing!(@billing,
-                                                                                  @billing.desired_due_day,
-                                                                                  @billing.parcels_number,
-                                                                                  bill_params[:value])
+          begin
+            @billing.save!
+            Bill.save_from_billing!(@billing, @billing.desired_due_day, @billing.parcels_number, bill_params[:value])
+            Payment.save_from_bills_billing!(@billing.bills, @billing)
+          rescue ActiveRecord::Errors
+            ActiveRecord::Rollback
+          end
         end
         json_response(@billing, :created)
       end

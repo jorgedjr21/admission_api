@@ -46,6 +46,10 @@ RSpec.describe 'Billings', type: :request do
       it 'must create the bills from billing' do
         expect(Bill.count).to eq(3)
       end
+
+      it 'must create the payments for the bills billing' do
+        expect(Payment.count).to eq(6)
+      end
     end
 
     context 'when the request for billing is invalid' do
@@ -62,6 +66,10 @@ RSpec.describe 'Billings', type: :request do
       it 'must not create the bills' do
         expect{ post api_v1_student_billings_path(student_id: student.id), params: { desired_due_day: '', parcels_number: 0, value: 759.90 } }.not_to change(Bill, :count)
       end
+
+      it 'must not create the payments for the bills billing' do
+        expect{ post api_v1_student_billings_path(student_id: student.id), params: { desired_due_day: '', parcels_number: 0, value: 759.90 } }.not_to change(Payment, :count)
+      end
     end
 
     context 'when the request for billing is valid but for bill is invalid' do
@@ -76,6 +84,10 @@ RSpec.describe 'Billings', type: :request do
 
       it 'must not create the bills' do
         expect { post api_v1_student_billings_path(student_id: student.id), params: { desired_due_day: 15, parcels_number: 3, value: 0.00 } }.not_to change(Bill, :count)
+      end
+
+      it 'must not create the payments for the bills billing' do
+        expect { post api_v1_student_billings_path(student_id: student.id), params: { desired_due_day: '', parcels_number: 0, value: 759.90 } }.not_to change(Payment, :count)
       end
     end
   end

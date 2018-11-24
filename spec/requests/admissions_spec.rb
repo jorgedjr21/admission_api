@@ -6,7 +6,7 @@ RSpec.describe 'Admissions', type: :request do
   let!(:student)   { create(:student, :with_admissions) }
   let!(:student_2) { create(:student, :with_admissions) }
 
-  describe 'GET students/:student_id/admissions' do
+  describe 'GET /api/v1/students/:student_id/admissions' do
     it 'must return all admissions from student' do
       get api_v1_student_admissions_path(student_id: student.id)
       expect(response.body).to eq(student.admissions.to_json)
@@ -18,7 +18,7 @@ RSpec.describe 'Admissions', type: :request do
     end
   end
 
-  describe 'GET students/:student_id/admission/:id' do
+  describe 'GET /api/v1/students/:student_id/admissions/:id' do
     before { get api_v1_student_admission_path(student_id: student.id, id: student.admissions.first.id) }
 
     it 'must show a admission information' do
@@ -30,7 +30,7 @@ RSpec.describe 'Admissions', type: :request do
     end
   end
 
-  describe 'POST students/:student_id/admissions' do
+  describe 'POST /api/v1/students/:student_id/admissions' do
     context 'when the request is valid' do
       before { post api_v1_student_admissions_path(student_id: student.id), params: { enem_grade: 850 } }
 
@@ -66,7 +66,7 @@ RSpec.describe 'Admissions', type: :request do
     end
   end
 
-  describe 'PUT /update' do
+  describe 'PUT /api/v1/students/:student_id/admissions/:id' do
     context 'when the admission exists' do
       before { put api_v1_student_admission_path(student_id: student.id, id: student.admissions.first.id), params: { enem_grade: 999 } }
 
@@ -84,7 +84,7 @@ RSpec.describe 'Admissions', type: :request do
     end
   end
 
-  describe 'DELETE /destroy' do
+  describe 'DELETE /api/v1/students/:student_id/admissions/:id' do
     context 'when the student exists' do
       before { delete api_v1_student_admission_path(student_id: student.id, id: student.admissions.first.id) }
 

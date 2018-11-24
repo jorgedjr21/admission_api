@@ -2,7 +2,7 @@
 
 FactoryBot.define do
   factory :bill do
-    value     { rand(200..800) }
+    value     { rand(100..999.99).round(2) }
     due_date  { Time.zone.now + 10.days }
     paid_date { nil }
     status    { :paid }

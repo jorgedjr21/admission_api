@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2018_11_24_041524) do
+ActiveRecord::Schema.define(version: 2018_11_24_065208) do
 
   create_table "active_storage_attachments", force: :cascade do |t|
     t.string "name", null: false
@@ -67,11 +67,15 @@ ActiveRecord::Schema.define(version: 2018_11_24_041524) do
 
   create_table "payments", force: :cascade do |t|
     t.decimal "value"
-    t.string "status"
-    t.string "method"
+    t.integer "status"
+    t.integer "payment_method"
     t.datetime "expiry_date"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+    t.integer "bill_id"
+    t.integer "billing_id"
+    t.index ["bill_id"], name: "index_payments_on_bill_id"
+    t.index ["billing_id"], name: "index_payments_on_billing_id"
   end
 
   create_table "students", force: :cascade do |t|

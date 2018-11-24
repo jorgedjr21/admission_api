@@ -4,7 +4,9 @@ Rails.application.routes.draw do
       resources :students,    only: %i[index create show update destroy] do
         resources :admissions,only: %i[index create show update destroy]
         resources :billings,  only: %i[index create show update destroy] do
-          resources :bills,   only: %i[index show]
+          resources :bills,   only: %i[index show] do
+            resources :payments, only: %i[index show]
+          end
         end
       end
       # For details on the DSL available within this file, see http://guides.rubyonrails.org/routing.html

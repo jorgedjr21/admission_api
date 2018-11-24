@@ -28,7 +28,7 @@ RSpec.describe Bill, type: :model do
       expect(Bill.get_payment_date(Time.zone.now, 3).strftime('%d/%m/%Y')).to eq((Time.zone.now + 3.month).strftime('%d/%m/%Y'))
     end
   end
-  describe '#create_bill_by_billing' do
+  describe '#save_from_billing!' do
     it 'must create the bill with the desired_due_day, parcels_number and value' do
       expect { Bill.save_from_billing!(billing, 15, 3, 725.25) }.to change(Bill, :count).by(3)
     end

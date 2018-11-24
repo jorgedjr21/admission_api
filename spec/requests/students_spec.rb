@@ -5,14 +5,14 @@ require 'rails_helper'
 RSpec.describe 'Students', type: :request do
   let!(:students) { create_list(:student, 5) }
 
-  describe 'GET /index' do
+  describe 'GET /api/v1/students' do
     it 'must get all students' do
       get api_v1_students_path, params: {}
       expect(response.body).to eq(students.to_json)
     end
   end
 
-  describe 'GET /students/:id' do
+  describe 'GET /api/v1/students/:id' do
     before { get api_v1_student_path(id: students.first.id) }
 
     it 'must return a student information' do
@@ -24,7 +24,7 @@ RSpec.describe 'Students', type: :request do
     end
   end
 
-  describe 'POST /create' do
+  describe 'POST /api/v1/students' do
     context 'when the request is valid' do
       before { post api_v1_students_path, params: { name: Faker::Name.name, cpf: CPF.generate(true) } }
 
@@ -46,7 +46,7 @@ RSpec.describe 'Students', type: :request do
     end
   end
 
-  describe 'PUT /update' do
+  describe 'PUT /api/v1/students/:id' do
     context 'when the student exists' do
       before { put api_v1_student_path(id: students.first.id), params: { name: 'Updated Name' } }
 
@@ -64,7 +64,7 @@ RSpec.describe 'Students', type: :request do
     end
   end
 
-  describe 'DELETE /destroy' do
+  describe 'DELETE /api/v1/students/:id' do
     context 'when the student exists' do
       before { delete api_v1_student_path(id: students.first.id) }
 

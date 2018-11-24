@@ -11,6 +11,12 @@ class Bill < ApplicationRecord
   validates :value, presence: true, numericality: { greater_than: 0 }
   enum      status: %i[waiting paid]
 
+  def as_json(_options = {})
+    super(only: %i[id value due_date status month year created_at updated_at],
+          include: { payments: { only: %i[id value status payment_method created_at updated_at] } }
+         )
+  end
+
   def self.save_from_billing!(billing, desired_due_day, parcels_number, value)
     raise ActiveRecord::RecordInvalid if parcels_number.zero? || desired_due_day.zero?
 
@@ -19,7 +25,7 @@ class Bill < ApplicationRecord
     parcels_number.times do |i|
       payment_date = get_payment_date(payment_start, i)
       bill = Bill.new(value: value,
-                      due_date: payment_date.strftime('%d'),
+                      due_date: payment_date,
                       month: payment_date.strftime('%m'),
                       year:  payment_date.strftime('%Y'),
                       status: :waiting,

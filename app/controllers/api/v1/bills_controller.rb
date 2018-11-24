@@ -12,7 +12,6 @@ module Api
 
       # GET /api/v1/students/:student_id/billings/:billing_id/bills/:id
       def show
-        p bill_params
         json_response(@bill)
       end
 

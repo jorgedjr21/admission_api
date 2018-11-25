@@ -18,6 +18,7 @@ O projeto foi criado em cima da base passada, com alguns adicionais:
 Para testar em um ambiente web, subi a aplicação para o Heroku, através do seguinte link:
 https://ancient-chamber-63130.herokuapp.com/
 Há apenas uma pagina inicial com algumas simples informações sobre a API. Pode-se testar utilizando o postman
+O ambiente do Heroku foi criado com PostgreSQL pois não há suporte ao SQLite3. Porém, o ambiente de dev está utilizando o SQLite3
 
 ## Ambiente de Desenvolvimento
 Meu ambiente de desenvolvimento é Linux (Xubuntu), portanto as instruções abaixo são baseadas nesse sistema.
